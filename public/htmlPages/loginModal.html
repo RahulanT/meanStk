@@ -1,0 +1,126 @@
+
+<style>
+  .login-form {
+     background-color: #E4E4E4;
+ }
+ .modal-header {
+    background-color: #BEBEBE;
+    color: black;
+ }
+ #authForm{
+    display: block;
+
+ }
+ .login-btn{
+  color:white;
+  background-color: #228B22;
+ }
+ 
+ /* #authSpin {
+  display: none;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  margin-top: 10px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #BEBEBE;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+} */
+</style>
+
+
+
+<style src = "./loginStyle.css" ></style>
+
+<div>
+
+
+<button type="button" class="btn btn-lg login-btn" data-toggle="modal" data-target="#loginModal">Login In</button>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">Sign Up</button>
+
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="loginModalLabel">Modal title</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div id= "authSpin"></div>
+
+
+            <form ng-submit="handleForm()" id = "authForm">
+
+                <div class="form-group w-50 center">
+                
+                    <br/>
+                      <input type="email" class="form-control" placeholder="username or email" id = 'userEmail' ng-model = "user.email" />
+                    </br>
+                    <input type="text" class="form-control" placeholder="password" id = 'userPassword' ng-model = "user.password"/>
+                    </br>
+
+                    <div class="form-group">
+                        <input type="checkbox"> Remember me </input>
+                    </div>        
+
+                    <div class="modal-footer">
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In">
+                        </div>
+                        <div class="form-group">
+                            <a href="./Login-Auth/User/AccVal"> Register Account </a>
+                        </div> 
+
+                    </div>
+              </form>
+          </div>
+      
+      </div>
+
+    </div>
+  
+</div>       
+   
+  

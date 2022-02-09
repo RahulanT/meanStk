@@ -1,0 +1,112 @@
+
+<style>
+.container {
+    padding-top: 300px; 
+    text-align: center;
+    /* background-color:#F4F4F4; */
+ }
+ .panel-height{
+    height: 300px;
+ }
+ .login-form {
+     background-color: #E4E4E4;
+ }
+ .panel-heading {
+    background-color: #BEBEBE;
+    color: black;
+ }
+ .center {
+  margin: auto;
+ }
+ #authForm{
+    display: block;
+
+ }
+ #authSpin {
+  display: none;
+  /* position: absolute; */
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  margin-top: 10px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #BEBEBE;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+</style>
+<div class="h-50 container">    
+   
+
+        <div class="panel panel-primary" >
+
+            <div class="panel-heading">
+                <div class="panel-title"> Account Login </div>
+            </div>     
+
+            <div class="panel-body panel-height login-form" >
+
+                
+                <div id= "authSpin"></div>
+
+                <form ng-submit="handleForm()" id = "authForm">
+                    <div class="form-group w-50 center">
+                    
+                        <br/>
+                         <input type="email" class="form-control" placeholder="username or email" id = 'userEmail' ng-model = "user.email" />
+                        </br>
+                       <input type="text" class="form-control" placeholder="password" id = 'userPassword' ng-model = "user.password"/>
+                        </br>
+
+                        <div class="form-group">
+                            <input type="checkbox"> Remember me </input>
+                        </div>        
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
+                        </div>
+                        <div class="form-group">
+                            <a href="./Login-Auth/User/AccVal"> Register Account </a>
+                        </div> 
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        
+   
+    
+</div>

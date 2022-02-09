@@ -1,0 +1,38 @@
+<style>
+    #myaccountDiv{
+        color: white;
+
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    tr {
+      border-bottom: 1px solid rgb(233, 228, 228);
+    }
+    td{
+
+        padding: 8px;
+    
+    }
+    </style>
+
+<div id = "myaccountDiv">
+    <h1>Your Account</h1>
+    <p>Trades </p>
+    <table>
+        <tr>
+          <th><b>Ticker</b></th>
+          <th><b>Position</b></th>
+          <th><b>No. Stocks</b></th>
+          <th><b>Buy/Sell Price</b></th>
+          <th><b>Curr Price</b></th>
+          <th><b>Company</b></th>
+        </tr>
+        <tr ng-repeat="x in myAccountView.data.trades" >
+          <td>{{x.ticker}}</td>
+          <td>{{x.company}}</td>
+        </tr>
+    </table>
+</div>
