@@ -1,0 +1,17 @@
+<!-- https://financialmodelingprep.com/api/v3/search?query=AA&limit=10&exchange=NASDAQ&apikey=ee74a2831784bf661aeeeefb557a43cd -->
+
+
+<form>
+    <!-- <div class="form-group"> -->
+        <input placeholder="Search Ticker" class="form-control" autofocus list=”suggestion_list” type="text" ng-model = "tickerSearchBox" ng-change="updateSearchFunc()">
+
+        <datalist id=”suggestion_list”>
+            <option ng-repeat ="item in updatedList" value ="{{item}}}">{{item}}</option>
+        </datalist>
+
+    <!-- </div> -->
+</form>
+<!-- <input type="text" autocomplete="off" autofocus ng-model="tickerSearchBox" ng-change="updateSearchFunc()">
+<div>
+  <div ng-repeat="item in updatedList">{{ item }}</div>
+</div> -->

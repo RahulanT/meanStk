@@ -1,0 +1,178 @@
+
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table th:hover{
+ cursor: pointer;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+
+#loader {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+
+
+
+
+
+
+
+
+
+</style>
+<body>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js" ></script>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('stockCtrl', function($scope, $http , $log) {
+
+    $scope.colum = 'symbol';
+    $scope.reverse = false; 
+    $scope.sortColumn = function(col){
+
+        $scope.column = col;
+        
+        if($scope.reverse){
+            $scope.reverse = false;
+            $scope.reverseclass = 'arrow-up';
+        }else{
+            $scope.reverse = true;
+            $scope.reverseclass = 'arrow-down';
+        }
+    };
+    $scope.formdata = {
+        sector_main : ['Basic Materials' , 'Communication' ,'Finance'],
+        industry_select : null,
+        industry_select_bool : false,
+        screener_return : [],
+    };
+
+
+    $scope.formdata.passform = function(){
+
+        var loadingState = document.getElementById('loader');
+
+        loadingState.style.display = "block";
+
+        $http.get("https://financialmodelingprep.com/api/v3/stock-screener?volumeMoreThan=10000&sector=" +  $scope.formdata.industry_select  + "&limit=100&apikey=ee74a2831784bf661aeeeefb557a43cd").then(
+
+    
+        function (response) {
+
+            $log.log(response.data);
+            $scope.formdata.screener_return = response.data;
+
+            loadingState.style.display = "none";
+
+            $scope.formdata.industry_select_bool = true;
+
+        }); 
+
+    };
+
+});
+
+</script>
+<div ng-app = "myApp", ng-controller="stockCtrl">
+
+    <form novalidate class="myForm">
+
+      <label for="singleSelect"> Select Sector: </label><br>
+
+      <select name="singleSelect" id = 'singleSelect' ng-model="formdata.industry_select">
+        <option ng-repeat="industry in formdata.sector_main">{{industry}}</option>
+      </select>
+      <button ng-click="formdata.passform()">Filter</button><br>
+
+      <!-- <span ng-if ="formdata.industry_select_bool">hello</span> -->
+
+    </form>
+    
+    <div id="loader"></div>
+
+
+    <span  ng-if ="formdata.industry_select_bool">
+        <table>
+            <tr>
+                <th ng-click='sortColumn("symbol")'>Symbol</th>
+                <th ng-click='sortColumn("companyName")'>Company Name</th>
+                <th ng-click='sortColumn("price")'>Price</th>
+                <th ng-click='sortColumn("marketCap")'>Market Cap</th>
+                <th ng-click='sortColumn("volume")'>Volume</th>
+                <th ng-click='sortColumn("sector")'>Sector</th>
+                <th ng-click='sortColumn("industry")'>Industry</th>
+                <th ng-click='sortColumn("beta")'>Beta</th>
+
+            </tr>
+
+            <tr ng-repeat="x in formdata.screener_return | orderBy:column:reverse ">
+                <td>{{ x.symbol }}</td>
+                <td>{{ x.companyName }}</td>
+                <td>{{ x.price }}</td>
+                <td>{{ x.marketCap }}</td>
+                <td>{{ x.volume }}</td>
+                <td>{{ x.sector }}</td>
+                <td>{{ x.industry }}</td>
+                <td>{{ x.beta }}</td>
+            </tr>
+
+        </table>
+    </span>
+
+</div>
+</body>
+
+

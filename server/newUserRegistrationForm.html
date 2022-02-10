@@ -1,0 +1,63 @@
+
+<style>
+    .container {
+        padding-top: 300px; 
+        text-align: center;
+        /* background-color:#F4F4F4; */
+     }
+     .panel-height{
+        height: 300px;
+     }
+     .login-form {
+         background-color: #E4E4E4;
+     }
+     .panel-heading {
+        background-color: #BEBEBE;
+        color: black;
+     }
+     .center {
+      margin: auto;
+     }
+    </style>
+
+
+    <div class="h-50 container">    
+       
+    
+            <div class="panel panel-primary" >
+    
+                <div class="panel-heading">
+                    <div class="panel-title"> Account Login </div>
+                </div>     
+    
+                <div class="panel-body panel-height login-form" >
+                    <form ng-submit="handleForm()">
+                        <div class="form-group w-50 center">
+                        
+                            <br/>
+                             <input type="email" class="form-control" placeholder="username or email" id = 'userEmail' ng-model = "user.email" />
+                            </br>
+                            <input type="text" class="form-control" placeholder="password" id = 'userPassword' ng-model = "user.password"/>
+                            </br>
+    
+                            <div class="form-group">
+                                <input type="checkbox"> Remember me </input>
+                            </div>        
+    
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
+                            </div>
+                            <div class="form-group">
+                                <a href="./Login-Auth/User/AccVal"> Register Account </a>
+                            </div> 
+    
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+            
+       
+        
+    </div>
+    

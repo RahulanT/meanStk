@@ -1,0 +1,247 @@
+
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  margin-top: 30px;
+
+}
+table th:hover{
+ cursor: pointer;
+}
+/* table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+} */
+.panel-group{
+  padding-top: 30px;
+  position: relative;
+
+}
+.panel-heading {
+    white-space: nowrap;
+    background-color: white;
+    height: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle ;
+
+}
+
+/* .panel-heading [data-toggle="collapse"].collapsed:after{
+    float: right;
+  }
+.panel-heading [data-toggle="collapse"]:after {
+    float: right;
+  } */
+
+.panel-body {
+    background-color: #F8F8F8	;
+    height: 700px;
+    padding-top: 10px;
+    padding-left: 10px;
+
+}
+
+.form-group{
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.bottomright {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+#loader {
+  display: none;
+  /* position: absolute; */
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  margin-top: 10px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #BEBEBE;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+
+
+
+</style>
+
+
+<div ng-controller="stockCtrl">
+
+    <!-- <form novalidate class="myForm">
+
+      <label for="singleSelect"> Select Sector: </label><br>
+
+      <select name="singleSelect" id = 'singleSelect' ng-model="formdata.industry_select">
+        <option ng-repeat="industry in formdata.sector_main">{{industry}}</option>
+      </select>
+      <button ng-click="formdata.passform()">Filter</button><br> -->
+
+      <!-- <span ng-if ="formdata.industry_select_bool">hello</span> -->
+
+    <!-- </form> -->
+    
+    <!-- <div  class="input-group"> -->
+      <div class="panel-group">
+
+        <div class= "panel-heading"> 
+          
+          
+            <h5 style = "display: inline-block;"> Stock Screener </h5>  
+          
+            <a style = "float: right;" role="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true"> 
+              
+              <i style = "vertical-align: middle ;"  class= "more-less glyphicon glyphicon-plus"></i>
+            
+            </a>
+          
+
+        </div>
+
+        <div id="collapse1" class="panel-collapse collapse">
+
+          <div class="panel-body">
+
+            <form novalidate class="myForm">
+
+                      <div class="form-group row"> 
+                          <div class="form-group col-md-6">
+
+                              <label for="singleSelect">Sector</label>
+
+                              <select class="form-control" name="singleSelect" id = 'singleSelect' ng-model="constraints.sector" >
+                               
+                                <option ng-repeat= "industry in formdata.sector_arr" ng-value= 'industry'>{{industry}}</option>
+                              </select>
+                        
+                        </div>
+
+                        <div class="form-group col-md-6">
+
+                              <label for="exchangeSelect">Exchange</label>
+
+                              <select class="form-control" name="exchangeSelect" id = 'exchangeSelect' ng-model="constraints.exchange" >
+                                
+                                <option ng-repeat= "exchange in formdata.exchange_arr" ng-value= 'exchange'>{{exchange}}</option>
+                              </select>
+                            
+                        </div>
+
+                      </div>
+
+                      <div class="form-group row"> 
+
+                          <div class="form-group col-md-6">
+
+                              <label for="marketCapSelect">Market Capital</label>
+
+                              <select class="form-control" name="marketCapSelect" id = 'marketCapSelect' ng-model="formdata.mrktCap_index" >
+                                
+                                <option ng-repeat= "marketCap in formdata.mrktCap_arr track by $index"   ng-value="$index" >{{marketCap}}</option>
+
+                              </select>
+                        
+                          </div>
+
+                          <div class="form-group col-md-3">
+
+                            <label for="priceRange">Stock Price</label>
+
+                            <input class="form-control" name="priceRangeLower" id = 'priceRangeLower' ng-model="constraints.priceRangeLower" placeholder="Min. Price" />
+                            
+                            
+
+                          </div>
+
+                          <div class="form-group col-md-3">
+                            <br/>
+                            <input class="form-control" name="priceRangeUpper" id = 'priceRangeUpper' ng-model="constraints.priceRangeUpper" placeholder="Max. Price"/> 
+
+                          </div>
+                      </div>
+              </form>
+
+              <button type="button" class= "btn btn-primary bottomright" ng-click="passform()" > Filter  </button>
+       
+    
+          </div>
+        </div>
+      </div>
+
+
+    <div id="loader"></div>
+
+    
+    <span id = "filterResults" ng-if ="formdata.status">
+        <table>
+            <tr>
+                <th ng-click='sortColumn("symbol")'>Symbol</th>
+                <th ng-click='sortColumn("companyName")'>Company Name</th>
+                <th ng-click='sortColumn("price")'>Price</th>
+                <th ng-click='sortColumn("marketCap")'>Market Cap</th>
+                <th ng-click='sortColumn("volume")'>Volume</th>
+                <th ng-click='sortColumn("sector")'>Sector</th>
+                <th ng-click='sortColumn("industry")'>Industry</th>
+                <th ng-click='sortColumn("beta")'>Beta</th>
+
+            </tr>
+
+            <tr ng-repeat="x in screener_return | orderBy:column:reverse ">
+                <td><a href="./">{{x.symbol}}</a></td>
+                <td>{{ x.companyName }}</td>
+                <td>{{ x.price }}</td>
+                <td>{{ x.marketCap }}</td>
+                <td>{{ x.volume }}</td>
+                <td>{{ x.sector }}</td>
+                <td>{{ x.industry }}</td>
+                <td>{{ x.beta }}</td>
+            </tr>
+
+        </table>
+    </span>
+
+</div>
