@@ -1,14 +1,248 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../assets/carousal1.jpg" class="d-block w-100" alt="...">
+<style>
+  .row{
+    padding-top: 20px;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+
+  }
+  .col-6 {
+      white-space: nowrap;
+  }
+  .card-body{
+    font-weight: bold;
+    padding :5px;
+  }
+  .card-header{
+    color:white;
+    background-color: rgba(72, 81, 102, 0.795);
+
+  }
+  .card{
+    border-radius: 5px;
+    padding:10px;
+    margin: 10px;
+    background-color: rgba(103, 115, 143, 0.795);
+  }
+  .news-item{
+    min-height: 30px;
+  }
+  .active-item{
+    min-height: 10px;
+    position: relative;
+
+  }
+  #belowCarousel{
+    position: relative;
+
+  }
+  #front-page-news-div{
+    white-space: nowrap;
+
+  }
+  #most-active-list{
+    white-space: nowrap;
+  }
+  #sect-perf-list{
+    white-space: nowrap;
+  }
+  .frontPageNewsScroll{
+    
+        max-height: 750px;
+        overflow : scroll;
+
+    }
+  
+  .carousel  {
+      padding-bottom: 30px;
+    }
+  
+  .mainIndexDiv{
+    /* overflow: auto; */
+    
+    width: 100%;
+    position: relative;
+    height : 100%;
+    padding: 0px;
+
+    }
+    
+#compact{
+  padding-right: 100px;
+  padding-left: 100px;
+
+}
+
+.list-group.striped-list {
+        padding: 0;
+    }
+  
+.list-group.striped-list > .list-group-item {
+    /* background-color: #c2c2c7 ; */
+    background-color: #bebeca ;
+    /* border: 1px solid rgb(255, 251, 251); */
+    /* border-bottom: 1px solid rgb(221,221,221); */
+    padding: 12px;
+}
+.list-group.striped-list > .list-group-item:nth-of-type(odd) {
+        background-color: #d2d2da ;
+    } 
+.list-group.striped-list > .list-group-item:first-child {
+    /* background-color: rgb(41, 170, 245); */
+    background-color: rgb(19, 73, 104);
+    color: white;
+    position: sticky;
+}
+
+#firstInput {
+  background-color: rgba(44, 45, 48, 0.795);
+  font-size:20px;
+  color: white;
+  width: 100%;
+  padding:20px;
+  border: 0px;
+  box-sizing: border-box;  
+  border: 4px solid rgba(123, 125, 134, 0.795);
+  border-radius: 0px;
+  box-shadow: 0 0 15px 4px rgba(9, 29, 48, 0.849);
+}
+form{
+    margin-left:10px;
+    margin-bottom: 20px;
+    margin-right:10px;
+    margin-top: 10px;
+
+}
+datalist {
+  position: relative;
+  background-color: rgba(71, 75, 90, 0.795);
+  border-color:  rgba(71, 75, 90, 0.795);
+  font-family: sans-serif;
+  width: 350px;
+  padding: 5px;
+
+}
+
+option {
+  background-color: rgba(71, 75, 90, 0.795);
+  padding: 4px;
+  color: white;
+  margin-bottom:  2px;
+  border-bottom: 0 1px white;
+  font-size: 18px;
+  cursor: pointer;
+}
+datalist option:hover, datalist option:focus {
+  color: #fff;
+  background-color: #036;
+  outline: 0 none;
+}
+</style>
+
+
+
+
+<div class = "mainIndexDiv container">
+
+  <div class="row">
+      <div class="card col-sm-2 " ng-repeat ="x in indicesView"  >
+        <div class="card-header">{{x[0].name}}</div>
+        <div class="card-body">
+          <p class="card-text">{{x[0].price | currency}}</p>
+        </div>
+        <div class="card-footer">
+          <p ng-style = "{'font-size' : '30px' , 'color' : (x[0].changesPercentage < 0 ) ? 'rgb(202, 14, 14)' : 'green' }">{{x[0].changesPercentage | number:2 }} %</p>
+        </div>
+        
       </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
+
+  <div ng-controller="searchCtrl">
+
+    <form>
+      <!-- <div class="form-group"> -->
+          <input  id = "firstInput" placeholder="Search Ticker" autofocus list=”suggestion_list” type="text" ng-model = "tickerSearchBox" ng-change="updateSearchFunc()" autocomplete="off">
+  
+          <datalist id=”suggestion_list”>
+              <option ng-repeat ="item in updatedList" value ="{{item.symbol}}}">{{item.symbol}}  {{item.CompanyName}}</option>
+          </datalist>
+  
+      <!-- </div> -->
+    </form>
+
+  </div>
+
+  <div id="compact">
+    <div id="carouselExampleControls" class="carousel slide position-relative" data-bs-ride="carousel">
+
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="../assets/carousal1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+
+
+        </div>
+        
+    </div>
+
+    <div  id = " belowCarousel" class = "row" >
+
+      <div class = "col-6" id = " front-page-news-div" >
+
+
+          <ul class="list-group  striped-list frontPageNewsScroll">
+            <li class="list-group-item" aria-current="true">News</li>
+            <li class="list-group-item" ng-repeat ="listing in newsListingView" >
+              <div class = "news-item">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{listing.title}}</h5>
+                  <small class="text-muted">{{listing.publishedDate}}</small>
+                </div>
+                <p class="mb-1">{{listing.text}}</p>
+                <small class="text-muted">{{listing.site}}</small>
+              </div>     
+            </li>
+          </ul>
+
+
+      </div>
+
+      <div class = "col-3" id = "most-active-list">
+
+        <ul class="list-group striped-list ">
+          <li class="list-group-item" aria-current="true">Most Active Stocks</li>
+          <li class="list-group-item" ng-repeat ="stk in activeListingView" >
+              <div class = "col-sm-3" style="white-space: nowrap;">{{stk.symbol}}</div> 
+              <div class = "col-sm-3" style="margin-right: 15px ;float: right ;white-space: nowrap; " ng-style = "{ 'color' : (stk.changesPercentage < 0 ) ? 'red' : 'green' }" >{{stk.changesPercentage | number: 2 }} </div>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class = "col-3" id = "sect-perf-list">
+
+        <ul class="list-group striped-list">
+          <li class ="list-group-item" aria-current="true">Sector Performance</li>
+          <li class="list-group-item" ng-repeat ="listing in sectorListingView" >
+              <div class = "col-sm-3" style="white-space: nowrap;">{{listing.sector}}</div> 
+              <div class = "col-sm-3" style="margin-right: 15px ;float: right ;white-space: nowrap; " ng-style = "{ 'color' : (listing.changesPercentage < 0 ) ? 'red' : 'green' }" >{{listing.changesPercentage }}</p> </div>
+          </li>
+        </ul>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

@@ -16,6 +16,10 @@
         padding: 8px;
     
     }
+    button{
+      background-color: blue;
+      color: white;
+    }
     </style>
 
 <div id = "myaccountDiv">
@@ -33,6 +37,8 @@
         <tr ng-repeat="x in myAccountView.data.trades" >
           <td>{{x.ticker}}</td>
           <td>{{x.company}}</td>
+          
+          <td><button ng-click = sellHandleFunc(x._id) >{{x._id}}</button></td>
         </tr>
     </table>
 </div>

@@ -5,14 +5,15 @@ angular.module('stkMainModule')
     var service = {};
   
     service.buyShare = buyShare;
-  
+    
+
     return service;
   
   
   
     function buyShare( UserID , ticker , company , noStocks , bsPrice , currPrice ) {
   
-        $http.post('./Login-Auth/transacts' , { UserID , ticker , company , noStocks , bsPrice , currPrice } )
+        $http.post('./Login-Auth/transacts/buy' , { UserID , ticker , company , noStocks , bsPrice , currPrice } )
   
             .then((userData) => {
   

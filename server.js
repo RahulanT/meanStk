@@ -7,9 +7,6 @@ const  myAccountRouter  = require('./server/routes/myAccountRoute');
 
 const db = require("./server/models/model_index");
 
-const port = 8080;
-
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -42,7 +39,7 @@ app.listen(process.env.PORT || 5000);
 
 
 
-console.log(`Server is running on port: ${port}`);
+console.log(`Server is running on port: ${process.env.PORT}`);
 
 
 

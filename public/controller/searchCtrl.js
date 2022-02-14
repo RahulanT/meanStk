@@ -1,6 +1,6 @@
 angular.module('stkMainModule')
 
-.controller ("searchCtrl" ,  function ($scope , $log , $http) {
+.controller ("searchCtrl" ,  function ($scope , $log , $http , TickerService) {
 
     $scope.tickerSearchBox = '';
   
@@ -14,7 +14,7 @@ angular.module('stkMainModule')
   
       $log.log($scope.tickerSearchBox);
   
-      return await searchTicker( $scope.tickerSearchBox )
+      return await TickerService.searchTicker( $scope.tickerSearchBox )
   
       .then( function(data) {
   

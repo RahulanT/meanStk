@@ -1,7 +1,16 @@
 <style>
-    .container{
+    #extraDiv{
+        /* display: block; */
+        /* overflow-y: scroll; */
+        position:relative;
+        height : 100%;
+        width: 100%;
         padding: 50px;
+        padding-top: 50px;
+      
+
     }
+  
     .row{
             border-style: solid;
             border-color: blue;
@@ -20,13 +29,15 @@
     }
     .newsScroll{
         max-height: 250px;
-        overflow : scroll;
+        overflow : auto;
 
     }
     .col-sm-8{
 
           border-style: solid;
           border-color: red;
+          
+
     }
     #stockPic {
         margin-top: 15% ;
@@ -89,8 +100,9 @@
 
     }
     #stkPlotDiv{
+        padding-left: 0px;
         position: relative;
-
+        box-shadow: 0 0 15px 4px rgba(168, 178, 187, 0.849);
     }
     #descriptionBox{
         overflow: hidden;
@@ -156,7 +168,8 @@
 
 
 
-<div class = "container" >
+<div id = "extraDiv">
+
 
     <div class="row">
 
@@ -194,7 +207,7 @@
             </ul>
         </div>
 
-        <div class="col-sm-8 center" id = "stkPlotDiv">  </div>
+        <div class="col-sm-8" id = "stkPlotDiv">  </div>
             <!-- {{ pageValues['companyName'] }} -->
             
       
@@ -227,5 +240,4 @@
         </div>
     </div>
 </div>
-
 

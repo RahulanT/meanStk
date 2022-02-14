@@ -1,6 +1,8 @@
+
+
 angular.module('stkMainModule')
 
-.controller( "myAccountCtrl",    function ( $scope , $http , $rootScope ) {
+.controller( "myAccountCtrl",    function ( $scope , $http , $rootScope , $log ) {
 
     $scope.myAccountView = {};
 
@@ -8,15 +10,30 @@ angular.module('stkMainModule')
 
     console.log('Root Scope User:' , $scope.rsData);
 
-    $http.get('./Login-Auth/me' ,  $scope.rsData.token )
+    $http.get( './Login-Auth/me' ,  $scope.rsData.token )
 
-    .then((userData) => {
+    .then( (userData) => {
 
         console.log("User Data: ", userData);
 
         $scope.myAccountView = userData;
 
 
-    });
+    } );
+
+
+    $scope.sellHandleFunc = function (passedTradeID) {
+
+        $log.log(passedTradeID);
+
+
+        $http.post( './Login-Auth/transacts/sell' ,   { token: $scope.rsData.token , tradeID: passedTradeID } )
+
+        .then((result)=>{
+
+            console.log(result);
+
+        })
+    }
 
 });

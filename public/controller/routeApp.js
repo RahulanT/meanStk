@@ -7,8 +7,8 @@ angular.module('stkMainModule')
        $routeProvider
 
             .when("/", {
-              templateUrl : "./htmlPages/index.html"
-              // controller : "view4Ctrl"
+              templateUrl : "./htmlPages/index.html",
+              controller : "welcomePageCtrl"
 
             })
             .when("/Search", {

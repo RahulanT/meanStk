@@ -5,10 +5,10 @@ const TradeSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  // buyPrice: {
-  //   type: Number,
-  //   required: true
-  // },
+  buyPrice: {
+    type: Number,
+    required: true
+  },
   // curPrice: {
   //   type: Number,
   //   required: true
@@ -21,10 +21,10 @@ const TradeSchema = mongoose.Schema({
   //   type: String,
   //   required: true
   // },
-  // position: {
-  //   type: String,
-  //   required: true
-  // }
+  position: {
+    type: String,
+    required: true
+  }
 });
 
 // export model user with UserSchema

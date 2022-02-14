@@ -187,7 +187,7 @@ async function (req , res) {
 
 
 
-userRouter.post( "/transacts" ,  
+userRouter.post( "/transacts/buy"  , 
   
 
 async function (req , res) {
@@ -196,9 +196,9 @@ async function (req , res) {
 
   let user = await db.User.find({email: UserID});
 
-  console.log( user[0]._id.toString());
+  console.log( user[0]._id.toString() );
 
-  return await db.Trade.create({ticker: ticker , company:  company , noStocks: noStocks  , bsPrice: bsPrice, currPrice: currPrice })
+  return await db.Trade.create( {ticker: ticker , company:  company , noStocks: noStocks  , bsPrice: bsPrice, currPrice: currPrice } )
   
   .then( function (docTut) {
   
@@ -229,6 +229,53 @@ async function (req , res) {
 );
 
 
+
+userRouter.post( "/transacts/sell" ,  Auth ,
+  
+
+async (req , res) => {
+
+      try{
+
+          console.log("beginning to sell position" , req.user);
+
+          const {  tradeID  } = req.body;
+
+          console.log(`TradeID Express ${tradeID}`);
+
+          let user = await db.User.findById(req.user.id);
+
+          let userTrades = user.trades;
+
+          console.log(user);
+
+          if (userTrades.includes(tradeID)) {
+
+            console.log('trade is in file , deleting trade');
+
+
+            return  res.status(200).json({
+              result: userTrades
+            });
+
+          }
+
+          else{
+
+            return  res.status(400).send("Trade Not Found");
+
+          }
+          
+      }
+      catch(e){
+        console.error(e);
+        res.status(500).json({
+          message: "Server Error"
+        });
+      }
+
+  }
+);
 
 userRouter.post ( "/UserRegister" , [
 
