@@ -35,11 +35,13 @@ color: white;
 .content {
   /* display: flex; */
   /* position: relative; */
-  padding: 20px;
+  /* padding: 20px; */
   background-color: rgba(2, 7, 29, 0.795);
   display: table;
-  height: 100%;
   width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+  height: 100%;
 }
 
 .sticky {

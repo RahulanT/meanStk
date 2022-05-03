@@ -1,8 +1,10 @@
 angular.module('stkMainModule')
 
-.controller ("searchCtrl" ,  function ($scope , $log , $http , TickerService) {
+.controller ("searchCtrl" ,  function ($scope , $log , $http , $window , TickerService , $route) {
 
     $scope.tickerSearchBox = '';
+
+    $scope.tickSelected = '';
   
     $scope.updatedList = [];
   
@@ -31,6 +33,19 @@ angular.module('stkMainModule')
       })
   
   
+    }
+
+    $scope.routeUserSearch = function() {
+
+      var landingUrl = "http://" + $window.location.host + "/#!/TickerView/" + $scope.tickSelected ;
+                  
+      $log.log(landingUrl);
+
+      $window.location.href = landingUrl;
+
+
+      return null;
+
     }
   
     

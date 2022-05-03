@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const  userRouter  = require('./server/routes/userRoute');
 const  myAccountRouter  = require('./server/routes/myAccountRoute');
+const  aboutMeRouter  = require('./server/routes/aboutMeRouter');
 
 const db = require("./server/models/model_index");
 
@@ -30,6 +31,9 @@ app.get('/PlotView' , function(req, res) {
 app.use( '/Login-Auth' , userRouter );
 
 app.use( '/My-Account' , myAccountRouter );
+
+app.use( '/AboutMe' , aboutMeRouter );
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -26,10 +26,9 @@ form {
 
 <form>
     <!-- <div class="form-group"> -->
-        <input  id = "firstInput" placeholder="Search Ticker" autofocus list=”suggestion_list” type="text" ng-model = "tickerSearchBox" ng-change="updateSearchFunc()">
-
+        <input  id = "firstInput" placeholder="Search Ticker" autofocus list=”suggestion_list” type="text" ng-model = "tickerSearchBox" ng-change="updateSearchFunc()"> <input style="float:right" type="button" onclick = "routeUserSearch()"/> </input>
         <datalist id=”suggestion_list”>
-            <option ng-repeat ="item in updatedList" value ="{{item}}}">{{item}}</option>
+            <option ng-model = "tickSelected"  ng-repeat ="item in updatedList" value = "{{item}}">{{item}}</option>
         </datalist>
 
     <!-- </div> -->

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Grid Pratice</title>
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    </head>
+
+    <body ng-app = "FirstApp" ng-cloak = "">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js" ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+        <script type = "text/javascript" src = "./grid_practice.js"></script>
+        <link rel="stylesheet" href="cssGrid_practice.css">
+        
+        <div class = "main-grid-container"  >
+
+            <div class="main-header">  
+                <h1>Rahulan Thevakanthan</h1>
+            </div>
+
+            <div class="box-1" >  
+                
+            </div>
+
+            <div class="box-2">
+                <md-content>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                      <md-tab label="Work Experience">
+                        <md-content class="md-padding">
+
+                          <h3>Biomedical Technician Intern </h3>                                    
+                          <p id ="companyName">Company: Lanka Hospitals LLC (JCI-accredited), Colombo, Sri Lanka</p> 
+                            <ul>
+                                <li>Conducted Preventive Maintenance, Quality Control and system checks on ventilators and anesthesia machines</li>
+                                <li>Customized User Interface of ECG machine to create flexible environment for surgeon</li>
+                                <li>Collaborated with medical professionals to draft requirements of new medical instruments and consulted medical
+                                vendors to evaluate equipment functionality</li>
+                                <li>Examined mechanical diagrams and software manuals of medical equipment to diagnose system errors</li>
+                                <li>Documented equipment malfunctions and reference log to maintain an efficient troubleshooting process</li>
+                                <li>Assisted senior technicians with process improvement and maintenance of medical equipment to prevent future
+                                malfunctions</li>
+                            </ul>
+                        </md-content>
+                        </md-tab>
+
+                        <md-tab label="Highlights of Qualifications">
+                            <md-content class="md-padding">
+
+                                <h3>Highlights of Qualifications</h3>
+                                <ul>
+                                    <li>Creative and driven programmer with experience scripting, troubleshooting, and linking databases, to webpages</li>
+                                    <li>Knowledgeable of both agile and waterfall programming regimes and applied to undergrad project</li>
+                                    <li>Gathered sensor data from Raspberry Pi using both Linux and Python shell to display on webpage</li>
+                                    <li>Created SQL stock indices databases and linked data to a NodeJS/AngularJS stock-market webpage</li>
+                                    <li>Experience integrating mathematical formulas into software systems using MATLAB and Python</li>
+                                    <li>Experience filtering noise and cleaning medical signal data using concepts from signal and systems</li>
+                                </ul>
+                            </md-content>
+                        </md-tab>
+
+                        <md-tab label="Projects">
+                            <md-content class="md-padding">
+                                <h3>Stock Market Webpage | Javascript | AngularJS</h3>
+                                <ul>
+                                    <li>Extracted real-time stock market data from Restful API and deployed to AngularJS webpage</li>
+                                    <li>Designed and developed a Relational Database of company financial/technical values using MySQL and NodeJS</li>
+                                    <li>Created interactive charts using PlotlyJS to compare multiple stocks increasing efficiency</li>
+                                </ul>
+                                <h3>Body position/orientation Tracker using Sensor paired to Raspberry-Pi | Python, Linux</h3>
+                                <ul>
+                                        <li>I2C configuration to read values from Inertial Measurement Unit connected to Raspberry Pi</li>
+                                        <li>Developed a webpage using socket.io library to dynamically update sensor readings</li>
+                                        <li>Implemented Flask Web-framework to serve webpage and remotely operate Raspberry Pi</li>
+                                        <li>Reduced sensors update latency by 10 - 20% and by establishing robust WebSocket communication technology
+                                        between client and server</li>
+                                </ul>
+                                <h3>ECG Arrythmia Classifier| Biomedical Signal Analysis | MATLAB</h3>
+                                <ul>
+                                    <li>ECG arrythmia classifier using ML and feature extraction/ processing</li>
+                                    <li>MATLAB scripting, machine learning algorithms SVM or KNN and ECG filter preprocessing</li>
+                                </ul>
+
+
+                            </md-content>
+                        </md-tab>
+
+                        <md-tab label="Education">
+                            <md-content class="md-padding">
+
+                                <h3>Bachelor of Biomedical Engineering | <i> Honours </i></h3>
+                                <h5> <i>Ryerson University, Toronto, ON</i> </h5>
+                                <ul>
+                                    <li>Final GPA: 3.7</li>
+                                    <li>Dean’s List (2019/2020, 2018/2019)</li>
+                                    <li>Relevant courses include Biomedical Signal Analysis, Introduction to Software Engineering</li>
+                                </ul>
+
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+
+        </div>
+
+    </body>
+</html>

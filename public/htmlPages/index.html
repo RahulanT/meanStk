@@ -1,3 +1,4 @@
+
 <style>
   .row{
     padding-top: 20px;
@@ -25,7 +26,9 @@
     background-color: rgba(103, 115, 143, 0.795);
   }
   .news-item{
-    min-height: 30px;
+    max-height: none;
+    flex-wrap: wrap;
+    max-width: inherit;
   }
   .active-item{
     min-height: 10px;
@@ -34,14 +37,17 @@
   }
   #belowCarousel{
     position: relative;
+    
 
   }
   #front-page-news-div{
     white-space: nowrap;
-
+    max-width: 200px ;
   }
   #most-active-list{
     white-space: nowrap;
+    max-height: 750px;
+    overflow-y: scroll;
   }
   #sect-perf-list{
     white-space: nowrap;
@@ -49,7 +55,7 @@
   .frontPageNewsScroll{
     
         max-height: 750px;
-        overflow : scroll;
+        overflow-y : scroll;
 
     }
   
@@ -58,13 +64,12 @@
     }
   
   .mainIndexDiv{
-    /* overflow: auto; */
-    
-    width: 100%;
+    width: 960px;
+    margin: 0 auto;
+    flex-wrap: wrap;
     position: relative;
     height : 100%;
-    padding: 0px;
-
+    
     }
     
 #compact{
@@ -82,7 +87,6 @@
     background-color: #bebeca ;
     /* border: 1px solid rgb(255, 251, 251); */
     /* border-bottom: 1px solid rgb(221,221,221); */
-    padding: 12px;
 }
 .list-group.striped-list > .list-group-item:nth-of-type(odd) {
         background-color: #d2d2da ;
@@ -142,7 +146,7 @@ datalist option:hover, datalist option:focus {
 
 
 
-<div class = "mainIndexDiv container">
+<div class = "mainIndexDiv">
 
   <div class="row">
       <div class="card col-sm-2 " ng-repeat ="x in indicesView"  >
@@ -161,11 +165,10 @@ datalist option:hover, datalist option:focus {
 
     <form>
       <!-- <div class="form-group"> -->
-          <input  id = "firstInput" placeholder="Search Ticker" autofocus list=”suggestion_list” type="text" ng-model = "tickerSearchBox" ng-change="updateSearchFunc()" autocomplete="off">
-  
-          <datalist id=”suggestion_list”>
-              <option ng-repeat ="item in updatedList" value ="{{item.symbol}}}">{{item.symbol}}  {{item.CompanyName}}</option>
-          </datalist>
+        <input autocomplete="off" id = "firstInput" placeholder="Search Ticker" autofocus list=”suggestion_list” type="text" ng-model = "tickerSearchBox" ng-change="updateSearchFunc()"> <input style="float:right" type="button" ng-click = "routeUserSearch()"/> </input>
+        <datalist id=”suggestion_list”>
+            <option ng-model = "tickSelected"  ng-repeat ="item in updatedList" value = "{{item.symbol}}">{{item.symbol}}</option>
+        </datalist>
   
       <!-- </div> -->
     </form>
@@ -173,6 +176,7 @@ datalist option:hover, datalist option:focus {
   </div>
 
   <div id="compact">
+
     <div id="carouselExampleControls" class="carousel slide position-relative" data-bs-ride="carousel">
 
 
@@ -194,23 +198,24 @@ datalist option:hover, datalist option:focus {
         </div>
         
     </div>
-
-    <div  id = " belowCarousel" class = "row" >
+  </div>
+  <div  id = " belowCarousel" class = "row" >
 
       <div class = "col-6" id = " front-page-news-div" >
 
 
           <ul class="list-group  striped-list frontPageNewsScroll">
             <li class="list-group-item" aria-current="true">News</li>
-            <li class="list-group-item" ng-repeat ="listing in newsListingView" >
-              <div class = "news-item">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{listing.title}}</h5>
-                  <small class="text-muted">{{listing.publishedDate}}</small>
-                </div>
-                <p class="mb-1">{{listing.text}}</p>
+            <li class="list-group-item" ng-repeat ="listing in newsListingView" title="Header" data-trigger = "ho" data-toggle="popover" data-placement="right" data-content="Content"> 
+              <div class = "news-item d-flex  w-100">
+              
+                  <p style="white-space: initial;" class=" w-75">{{listing.title}}</p>
+                  <small class="text-muted w-25">{{listing.publishedDate}}</small>
+
+              </div> 
                 <small class="text-muted">{{listing.site}}</small>
-              </div>     
+                <!-- <a href="./" title="Header" data-toggle="popover" data-placement="right" data-content="Content">Right</a> -->
+
             </li>
           </ul>
 
@@ -222,8 +227,12 @@ datalist option:hover, datalist option:focus {
         <ul class="list-group striped-list ">
           <li class="list-group-item" aria-current="true">Most Active Stocks</li>
           <li class="list-group-item" ng-repeat ="stk in activeListingView" >
-              <div class = "col-sm-3" style="white-space: nowrap;">{{stk.symbol}}</div> 
-              <div class = "col-sm-3" style="margin-right: 15px ;float: right ;white-space: nowrap; " ng-style = "{ 'color' : (stk.changesPercentage < 0 ) ? 'red' : 'green' }" >{{stk.changesPercentage | number: 2 }} </div>
+            <div class = "d-flex  w-100"> 
+              <p class = "w-50" style="white-space: nowrap;">{{stk.symbol}}</p> 
+              <p class = " w-50" style="float: right ;" ng-style = "{ 'color' : (stk.changesPercentage < 0 ) ? 'red' : 'green' }" >{{stk.changesPercentage | number: 2 }} </p>
+              <!-- <div class = "col-sm-3" style="white-space: nowrap;">{{stk.symbol}}</div> 
+              <div class = "col-sm-3" style="margin-right: 15px ;float: right ;white-space: nowrap; " ng-style = "{ 'color' : (stk.changesPercentage < 0 ) ? 'red' : 'green' }" >{{stk.changesPercentage | number: 2 }} </div> -->
+            </div>
           </li>
         </ul>
 
@@ -234,8 +243,10 @@ datalist option:hover, datalist option:focus {
         <ul class="list-group striped-list">
           <li class ="list-group-item" aria-current="true">Sector Performance</li>
           <li class="list-group-item" ng-repeat ="listing in sectorListingView" >
-              <div class = "col-sm-3" style="white-space: nowrap;">{{listing.sector}}</div> 
-              <div class = "col-sm-3" style="margin-right: 15px ;float: right ;white-space: nowrap; " ng-style = "{ 'color' : (listing.changesPercentage < 0 ) ? 'red' : 'green' }" >{{listing.changesPercentage }}</p> </div>
+            <div class = "d-flex  w-100"> 
+              <p class = "w-50" style="white-space: initial;">{{listing.sector}}</p> 
+              <p class = "w-50" style="float: right;" >{{listing.changesPercentage }} </p>
+            </div>
           </li>
         </ul>
 
@@ -243,6 +254,5 @@ datalist option:hover, datalist option:focus {
 
 
     </div>
-  </div>
-
+ 
 </div>

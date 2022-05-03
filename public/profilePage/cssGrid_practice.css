@@ -1,0 +1,66 @@
+.main-grid-container {
+    display: grid;
+    height: 1500px;
+    background-color: tan;
+    grid-template-rows: 20% 30% 40%;
+    row-gap: 2px;
+
+
+}
+[class^="box-"] {
+    background-color: whitesmoke;
+    /* display: grid; */
+    margin: 15px;
+    border-radius: 15px;
+    /* border-width: 15px; */
+    font-size: 30px;
+
+
+  }
+
+  body {
+    /* font-family: sans-serif; */
+    width: 100%;
+    margin: 0px;
+    
+  }
+
+  .main-header{
+
+    background-color: burlywood;
+    text-align: center;
+    font-family: "monaco" ,monospace;
+    font-size: 40px;
+
+  }
+
+  .md-padding{
+
+    /* background-color: ghostwhite; */
+    font-size: 20px;
+    background-color: whitesmoke;
+
+
+  }
+
+  md-tabs {
+    background-color: blanchedalmond ;
+    color: brown !important;
+
+
+ }
+
+ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: brown !important;
+    background-color: brown !important;
+}
+
+ md-tab.md-default-theme{
+    color: rgb(75, 42, 19);
+
+
+ }
+ .md-tab-label{
+
+    color: rgb(75, 42, 19);
+ }
