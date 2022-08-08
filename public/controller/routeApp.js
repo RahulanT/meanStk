@@ -32,8 +32,8 @@ angular.module('stkMainModule')
 
             })
             .when("/PlotView", {
-            templateUrl : "./htmlPages/fetchingtest_2.0.html"
-            // controller : "view4Ctrl"
+            templateUrl : "./htmlPages/fetchingtest_2.0.html" , 
+            controller : "cmprPlotCtrl"
 
             })
             .when("/TickerView", {

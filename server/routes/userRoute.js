@@ -149,13 +149,13 @@ userRouter.post( "/createTransacts" ,
 
 async function (req , res) {
 
-  const {UserID , ticker , company} = req.body;
+  const {UserID , ticker , company, buyPrice , position , exchange} = req.body;
 
   let user = await db.User.find({email: UserID});
 
   console.log( user[0]._id.toString());
 
-  return await db.Trade.create({ticker: ticker , company:company})
+  return await db.Trade.create({ticker: ticker , company:company ,buyPrice: buyPrice , position: position , exchange : exchange })
   
   .then( function (docTut) {
   
@@ -192,13 +192,13 @@ userRouter.post( "/transacts/buy"  ,
 
 async function (req , res) {
 
-  const {UserID , ticker , company , noStocks , bsPrice , currPrice } = req.body;
+  const {UserID , ticker , noStocks, company, buyPrice , position , exchange ,time } = req.body;
 
   let user = await db.User.find({email: UserID});
 
   console.log( user[0]._id.toString() );
 
-  return await db.Trade.create( {ticker: ticker , company:  company , noStocks: noStocks  , bsPrice: bsPrice, currPrice: currPrice } )
+  return await db.Trade.create( {ticker: ticker ,noStocks: noStocks, company:company ,buyPrice: buyPrice , position: position , exchange : exchange , time: time } )
   
   .then( function (docTut) {
   

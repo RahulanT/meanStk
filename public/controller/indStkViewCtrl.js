@@ -15,7 +15,7 @@ angular.module('stkMainModule')
     $scope.peersArray =[];
   
   
-    TickerService.mainServFunc($scope.ticker , ['profile' , 'peers' , 'news' , 'histPrice'])
+    TickerService.mainServFunc( $scope.ticker , ['profile' , 'peers' , 'news' , 'histPrice'] )
   
       .then( (dataDict) => {
   

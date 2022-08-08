@@ -9,21 +9,26 @@ const TradeSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  // curPrice: {
-  //   type: Number,
-  //   required: true
-  // },
+  noStocks: {
+    type: Number,
+    required: true
+  },
   ticker: {
     type: String,
     required: true
   },
-  // exchange: {
-  //   type: String,
-  //   required: true
-  // },
+  exchange: {
+    type: String,
+    required: true
+  },
   position: {
     type: String,
     required: true
+  },
+  time : {
+    type: Date,
+    require: true
+
   }
 });
 

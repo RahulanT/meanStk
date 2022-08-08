@@ -1,6 +1,6 @@
 angular.module('stkMainModule')
 
-.factory('TradeService', function ( $http , DataService , TickerService) {
+.factory('TradeService', function ( $http , DataService , TickerService ) {
 
     var service = {};
   

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const  userRouter  = require('./server/routes/userRoute');
 const  myAccountRouter  = require('./server/routes/myAccountRoute');
-const  aboutMeRouter  = require('./server/routes/aboutMeRouter');
+const  aboutMeRouter  = require('./server/routes/aboutMeRoute');
 
 const db = require("./server/models/model_index");
 
@@ -22,11 +22,11 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/PlotView' , function(req, res) {
+// app.get('/PlotView' , function(req, res) {
 
-    res.sendFile(path.join(__dirname , 'public/htmlPages/fetchingtest_2.0.html')); // load our public/index.html file
+//     res.sendFile(path.join(__dirname , 'public/htmlPages/fetchingtest_2.0.html')); // load our public/index.html file
 
-});
+// });
 
 app.use( '/Login-Auth' , userRouter );
 

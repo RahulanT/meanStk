@@ -43,8 +43,8 @@ app.config ( function ( $routeProvider) {
 
     })
     .when("/PlotView", {
-      templateUrl : "fetchingtest_2.0.html"
-      // controller : "view4Ctrl"
+      templateUrl : "fetchingtest_2.0.html" , 
+      controller : "plotCompareCtrl"
 
     })
     .when("/tickerView", {
@@ -70,7 +70,7 @@ app.config ( function ( $routeProvider) {
             $location.path("/Portfolio");
         }
     });
-});
+  });
 
   app.controller("view1Ctrl", function ($scope , $routeProvider) {
     $scope.msg = "I am View 1 Ctrl";
@@ -78,8 +78,8 @@ app.config ( function ( $routeProvider) {
   app.controller("view2Ctrl", function ($scope) {
     // $scope.msg = "I am View 2 Ctrl";
   });
-  app.controller("view5Ctrl", function ($scope) {
-    // $scope.msg = "I am View 2 Ctrl";
+  app.controller('plotCompareCtrl',  function ($scope) {
+    $scope.msg = "I am View 2 Ctrl";
   });
   app.controller("view3Ctrl",  function ($scope , $http , $location , $rootScope ) {
 
@@ -316,7 +316,7 @@ app.controller( "indStkViewCtrl", ['$scope',  function ($scope) {
 
               };
 
-              peersDict.forEach( (item , index) => {
+              peersDict.forEach( (item , index ) => {
 
                 $scope.peersArray.push({
   

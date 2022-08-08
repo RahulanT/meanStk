@@ -11,4 +11,4 @@ aboutMeRouter.get( "/" , Auth , function(req , res) {
 
 });
 
-module.exports  = myAccountRouter;
+module.exports  = aboutMeRouter ;

@@ -1,8 +1,8 @@
 angular.module('stkMainModule')
 
-  .directive('tickSearch',  {
+  .directive( 'tickSearch',  {
 
-    templatUrl: '../htmlPages/searchComponent.html',
+    templatUrl: '../htmlPages/searchComponent.html' ,
 
     controller: function searchCtrl($scope , $log , $http) {
 
@@ -24,7 +24,7 @@ angular.module('stkMainModule')
     
           // $log.log(data);
           
-          for( let i = 0 ; i < data.length ; i++){
+          for( let i = 0 ; i < data.length ; i++) {
     
             $scope.updatedList.push({'symbol' : data[i]['symbol'] , 'CompanyName' : data[i]['name']});
             $scope.$apply();

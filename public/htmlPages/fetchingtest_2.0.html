@@ -1,27 +1,44 @@
 
-<head>
+<!-- <head>
 
     <link rel="stylesheet" type="text/css" href="fetchingtest_stylesheet.css">
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-</head>
+</head> -->
+
+
+
+
+    <!-- <div style= "position : relative;"> -->
+
+    <!-- <input type="text" id="tickerID_1" placeholder="Ticker ID">
+
+    <button type="button" onClick="recievedata()"> Get Data </button> -->
+
+    
+    <!-- </div> -->
+  
+
+    <!-- <div class = "plotsec">
+      <canvas id="myChart_2"></canvas>
+    </div> -->
+  
 
 
 <div>
 
-    <!-- <div style= "position : relative;"> -->
+  <form >
+    <!-- <div class="form-group"> -->
+      <input autocomplete="off" placeholder="Enter Multiple Tickers" autofocus  type="text" ng-model = "tickers" /> 
+      <input type = "button" value = "Enter" ng-click = "plotTickers()" /> 
+      
 
-    <input type="text" id="tickerID_1" placeholder="Ticker ID">
+  </form>
 
-    <button type="button" onClick="recievedata()">Get Data</button>
-
-    <!-- </div> -->
-  
-
-    <div class = "plotsec">
+  <div class = "plotsec">
       <canvas id="myChart_2"></canvas>
-    </div>
-  
+  </div>
+
 </div>
+

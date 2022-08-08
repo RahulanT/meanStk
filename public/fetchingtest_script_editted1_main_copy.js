@@ -4,7 +4,7 @@
 
 function senddata() {
 
-    function findmaxdate(sampdic){
+    function findmaxdate ( sampdic ) {
 
       var maxdate = 0;
       var maxdateindex;

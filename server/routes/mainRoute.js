@@ -59,7 +59,7 @@ mainRouter.route("/database/newdocument").post( function (req, res) {
         }
       });
 
-  });
+  } );
 
 mainRouter.route("/database/updateDocument").post(function (req, res) {
     const dbConnect = dbConn.getDb();

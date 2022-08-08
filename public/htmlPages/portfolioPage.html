@@ -1,15 +1,21 @@
 <style>
     #myaccountDiv{
         color: white;
-
+         padding-left: 30px;
+        padding-right: 30px;
+    }
+    h1{
+      color: 255,245,238;
     }
     table {
       border-collapse: collapse;
       width: 100%;
+      table-layout: auto;
     }
     
     tr {
-      border-bottom: 1px solid rgb(233, 228, 228);
+      /* border-bottom: 0.25px solid rgb(233, 228, 228); */
+      border-bottom: thin solid rgba(232, 252, 255, 0.918);
     }
     td{
 
@@ -17,8 +23,13 @@
     
     }
     button{
-      background-color: blue;
+      background-color: rgb(65, 65, 119);
       color: white;
+    }
+    .headRow {
+
+      border-bottom: thin solid rgb(255, 255, 255);
+
     }
     </style>
 
@@ -26,19 +37,33 @@
     <h1>Your Account</h1>
     <p>Trades </p>
     <table>
-        <tr>
+        <tr class = "headRow" >
           <th><b>Ticker</b></th>
           <th><b>Position</b></th>
           <th><b>No. Stocks</b></th>
           <th><b>Buy/Sell Price</b></th>
-          <th><b>Curr Price</b></th>
+          <th><b>Exchange</b></th>
+          <!-- <th><b>Curr Price</b></th> -->
           <th><b>Company</b></th>
         </tr>
-        <tr ng-repeat="x in myAccountView.data.trades" >
+        <tr ng-click = "sellHandleFunc( x.ticker )"  ng-repeat="x in myAccountView.data.trades" >
           <td>{{x.ticker}}</td>
+          <td>{{x.position}}</td>
+          <td>{{x.noStocks}}</td>
+          <td>{{x.buyPrice}}</td>
+          <td>{{x.exchange}}</td>
           <td>{{x.company}}</td>
-          
-          <td><button ng-click = sellHandleFunc(x._id) >{{x._id}}</button></td>
         </tr>
     </table>
+
+    <div ng-show = "tradePanel" >
+
+      <p>Show Me!</p>
+
+    </div>
+
+
+
+
+
 </div>

@@ -30,12 +30,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script> 
-
+ 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 </head>
 
 <link rel="stylesheet" href="./cssFiles/stkWBPG.css">
-    
+<link rel="stylesheet" href="./cssFiles/fetchingtest_stylesheet.css">   
 
  <body  ng-app = "stkMainModule" >
 
@@ -64,7 +66,8 @@
 
             <script  src="../controller/mainApp.js"></script> 
             <script  src="../controller/routeApp.js"></script> 
-           
+
+            <script type = "text/javascript" src="../services/plotCompServiceFactory.js"></script>
             <script type = "text/javascript" src="../services/dataServiceFactory.js"></script>
             <script type = "text/javascript" src="../services/authServiceFactory.js"></script>
             <script type = "text/javascript" src="../services/tickerServiceFactory.js"></script>
@@ -78,7 +81,7 @@
             <script type = "text/javascript" src="../controller/login2Ctrl.js"></script>
             <script type = "text/javascript" src="../controller/indStkViewCtrl.js"></script>
             <script type = "text/javascript" src="../controller/myAccountCtrl.js"></script>
-
+            <script type = "text/javascript" src="../controller/cmprPlotCtrl.js" ></script>
 
             <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> -->

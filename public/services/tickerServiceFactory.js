@@ -3,10 +3,11 @@ angular.module('stkMainModule')
 .factory('TickerService', function ( $http , DataService ) {
 
 
-    var service = {};
+    var service = {} ;
   
     service.mainServFunc = mainServFunc ;
     service.searchTicker = searchTicker ;
+    service.mainServFuncExtended = mainServFuncExtended;
 
     return service;
   
@@ -52,12 +53,43 @@ angular.module('stkMainModule')
       
                       return data;
               });
-          }
-       async function searchTicker(  userQuery  ) {
+    }
+    
+    async function mainServFuncExtended ( tickers ) {
+        
+        tickers = tickers.toUpperCase();
+        
+        var ticker_split = tickers.split(',');
+
+        var reqUrls = [];
+
+        ticker_split.forEach( function(tic) {
+    
+          let url_new = 'https://financialmodelingprep.com/api/v3/historical-price-full/' + tic + '?serietype=line&apikey=ee74a2831784bf661aeeeefb557a43cd' ;
+          reqUrls.push(url_new);
+    
+        });
+
+        let requests = reqUrls.map(url => fetch(url).then(responses => responses.json()));
+
+        return Promise.all(requests)
+      
+        .then( function (data) {
+
+              console.log(data);
+
+                return data;
+        });
+
+    }
+
+
+    async function searchTicker (  userQuery  ) {
 
             let query =  String(userQuery).toUpperCase();
         
             let response = await fetch("https://financialmodelingprep.com/api/v3/search?query=" +  query + "&limit=10&exchange=NASDAQ&apikey=ee74a2831784bf661aeeeefb557a43cd")
+            
             let result = await response.json();
             console.log(result);
         
